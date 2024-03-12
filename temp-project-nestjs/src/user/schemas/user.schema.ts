@@ -44,6 +44,17 @@ export class User {
   @Prop({ type: MongoSchema.Types.String, required: true })
   contactNumber: string;
 
+  @Prop({
+    type: [
+      {
+        token: {
+          type: String,
+        },
+      },
+    ],
+  })
+  tokens: Array<{ token: string }>; 
+
   createdAt: Date;
   updatedAt: Date;
 }

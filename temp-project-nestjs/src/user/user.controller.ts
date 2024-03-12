@@ -9,10 +9,16 @@ export class UserController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async addStudent(@Body() body) {
+  async addUser(@Body() body) {
     await this.userservice.addUser(body);
     return {
       message: USER_MESSAGES.SUCCESS.SIGNUP,
     };
+  }
+
+  @Post('/login')
+  @HttpCode(HttpStatus.OK)
+  async login(@Body() body) {
+    return this.userservice.login(body.email, body.password);
   }
 }
