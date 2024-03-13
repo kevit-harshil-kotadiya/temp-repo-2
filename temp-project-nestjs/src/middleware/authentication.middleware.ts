@@ -17,7 +17,6 @@ export class AuthenticationMiddleware implements NestMiddleware {
   ) {}
   async use(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('*********************************');
       const token = req.headers.authorization?.replace('Bearer ', '');
 
       if (!token) {

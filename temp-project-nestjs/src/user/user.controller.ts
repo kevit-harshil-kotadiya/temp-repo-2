@@ -2,6 +2,8 @@ import { Controller, HttpCode, HttpStatus } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Post, Body } from '@nestjs/common';
 import { USER_MESSAGES } from './constants';
+import { logger } from 'src/libs/logger';
+import { LoginRequestBodyDTO } from './dto';
 
 @Controller('user')
 export class UserController {
@@ -18,7 +20,8 @@ export class UserController {
 
   @Post('/login')
   @HttpCode(HttpStatus.OK)
-  async login(@Body() body) {
+  async login(@Body() body: LoginRequestBodyDTO) {
+    logger.info('User Logged in!!!!!!!!');
     return this.userservice.login(body.email, body.password);
   }
 }
