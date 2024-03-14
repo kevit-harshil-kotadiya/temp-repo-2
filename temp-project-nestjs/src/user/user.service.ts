@@ -15,11 +15,6 @@ export class UserService {
   ) {}
 
   async addUser(body): Promise<User> {
-    const user = await this.User.findOne({ firstName: body.firstName });
-    const hashedPassword = user.password;
-
-    const compare = await bcrypt.compare(body.password, hashedPassword);
-
     const newUser = this.User.create(body);
     return newUser;
   }
