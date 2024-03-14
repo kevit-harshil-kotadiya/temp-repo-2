@@ -28,3 +28,9 @@ export class SearchUserBodyDTO {
   @Transform(mongoIdTransform)
   readonly userId: Types.ObjectId;
 }
+
+export class AddUserResponseObject {
+  success: boolean;
+  message: string;
+  data: Object;
+}
